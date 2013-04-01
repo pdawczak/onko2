@@ -1,4 +1,35 @@
 parameters:
 
 services:
+    app.navbar:
+        class: '%mopa_bootstrap.navbar.generic%'
+        scope: request
+        arguments:
+            - { leftmenu: @app.navbar_main_menu=, rightmenu: @app.navbar_right_menu= }
+            - {}
+            - { title: "Onko", titleRoute: "homepage", fixedTop: true, isFluid: true, inverse: true }
+        tags:
+            - { name: mopa_bootstrap.navbar, alias: frontendNavbar }
 
+    app.navbar_menu_builder:
+        class: App\WebBundle\Menu\NavbarMenuBuilder
+        scope: request
+        arguments: [ '@knp_menu.factory', '@security.context' ]
+
+    app.navbar_main_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: app.navbar_menu_builder
+        factory_method: createMainMenu
+        arguments: [ '@request' ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    app.navbar_right_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: app.navbar_menu_builder
+        factory_method: createRightSideDropdownMenu
+        arguments: [ '@request' ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
