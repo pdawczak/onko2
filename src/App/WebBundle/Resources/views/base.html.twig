@@ -1,0 +1,106 @@
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+<!DOCTYPE html>
+
+{% block html_tag %}
+<html>
+{% endblock html_tag %}
+
+{% block head %}
+    <head>
+        <meta charset="UTF-8" />
+        {% block head_style %}
+            {% stylesheets
+                '@MopaBootstrapBundle/Resources/public/css/datepicker.css'
+                '@AppWebBundle/Resources/public/css/bootstrap.css'
+                '@AppWebBundle/Resources/public/css/style.css'
+            %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock head_style %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% block head_script %}
+            {# Overwrite this block to add your own js here, to get them generated into final files #}
+        {% endblock head_script %}
+
+        <title>{% block title %}Mopa Bootstrap Bundle{% endblock title %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block head_bottom %}
+        {% endblock head_bottom %}
+    </head>
+{% endblock head %}
+
+{% block body_tag %}
+<body data-spy="scroll">
+{% endblock body_tag %}
+
+{% block body_start %}
+{% endblock body_start %}
+
+{% block body %}
+    {% block navbar %}
+        {{ mopa_bootstrap_navbar('frontendNavbar') }}
+    {% endblock navbar %}
+
+{% block container %}
+    <div class="{% block container_class %}container-fluid{% endblock container_class %}">
+        {% block header %}
+        {% endblock header %}
+
+        <div class="content">
+            {% block page_header %}
+                <div class="page-header">
+                    <h1>{% block headline %}Mopa Bootstrap Bundle{% endblock headline %}</h1>
+                </div>
+            {% endblock page_header %}
+
+            {% block flashes %}
+                {% if app.session.flashbag.peekAll|length > 0 %}
+                    <div class="row-fluid">
+                        <div class="span12">
+                            {{ session_flash() }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock flashes %}
+
+            {% block content_row %}
+                <div class="row-fluid">
+                    {% block content %}
+                        <div class="span9">
+                            {% block content_content %}
+                                <strong>Hier könnte Ihre Werbung stehen ... </strong>
+                            {% endblock content_content %}
+                        </div>
+                        <div class="span3">
+                            {% block content_sidebar %}
+                                <h2>Sidebar</h2>
+                            {% endblock content_sidebar %}
+                        </div>
+                    {% endblock content %}
+                </div>
+            {% endblock content_row %}
+        </div>
+        <footer>
+            {% block footer %}
+                <p>&copy; <a href="http://www.mohrenweiserpartner.de" target="_blank">Mohrenweiser & Partner</a> 2011-2013</p>
+            {% endblock footer %}
+        </footer>
+    </div> <!-- /container -->
+{% endblock container %}
+{% block foot_script %}
+    {% javascripts
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+        '@AppWebBundle/Resources/public/js/bootstrap.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+        '@MopaBootstrapBundle/Resources/public/js/eyecon-bootstrap-datepicker.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock foot_script %}
+{% endblock body %}
+</body>
+</html>

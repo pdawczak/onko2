@@ -29,7 +29,7 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ MopaBootstrapBundle, AppWebBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -63,3 +63,6 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+mopa_bootstrap:
+    navbar: ~
