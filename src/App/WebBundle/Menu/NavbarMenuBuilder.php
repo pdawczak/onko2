@@ -37,6 +37,9 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
     public function createRightSideDropdownMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav');
+
+        $menu->addChild('Pacjenci', array('route' => 'app_pacjent_index'));
 
         return $menu;
     }
