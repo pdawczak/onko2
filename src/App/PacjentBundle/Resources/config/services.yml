@@ -1,3 +1,10 @@
 parameters:
+    app_pacjent.entity.class:     App\PacjentBundle\Entity\Pacjent
+    app_pacjent.repository.class: App\PacjentBundle\Repository\PacjentRepository
 
 services:
+    app_pacjent.repository:
+        class:              %app_pacjent.repository.class%
+        factory_service:    doctrine.orm.entity_manager
+        factory_method:     getRepository
+        arguments:          [ %app_pacjent.entity.class% ]

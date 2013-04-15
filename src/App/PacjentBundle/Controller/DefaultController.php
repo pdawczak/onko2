@@ -20,6 +20,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        return array(
+            'pacjenci'  => $this->get('app_pacjent.repository')->findAll(),
+        );
     }
 }
