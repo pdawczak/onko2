@@ -40,6 +40,7 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
     public function createRightSideDropdownMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav pull-right');
 
         return $menu;
     }
