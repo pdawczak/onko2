@@ -1,3 +1,8 @@
+app_pacjent:
+    resource: "@AppPacjentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app_web:
     resource: "@AppWebBundle/Controller/"
     type:     annotation
