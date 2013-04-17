@@ -11,20 +11,56 @@ class PacjentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imie')
-            ->add('nazwisko')
-            ->add('dataUrodzenia')
-            ->add('plec')
-            ->add('wzrost')
-            ->add('waga')
-            ->add('reka')
+            ->setAttribute('error_type', 'block')
+        ;
+
+        $builder
+            ->add('imie'        , null, array(
+                'label'     => 'Imię',
+            ))
+            ->add('nazwisko'    , null, array(
+            ))
+            ->add('dataUrodzenia', null, array(
+                'label'     => 'Data urodzenia'
+            ))
+            ->add('plec'    , 'choice', array(
+                'label'         => 'Płeć',
+                'expanded'      => true,
+                'widget_type'   => 'inline',
+                'choices'       => array(
+                    'm' => 'Mężczyzna',
+                    'k' => 'Kobieta'
+                )
+            ))
+            ->add('wzrost'  , null, array(
+                'widget_suffix' => 'cm',
+                'attr'      => array(
+                    'class' => 'input-mini',
+                )
+            ))
+            ->add('wagaKg'  , null, array(
+                'widget_suffix' => 'kg',
+                'attr'      => array(
+                    'class' => 'input-mini',
+                )
+            ))
+            ->add('reka'    , 'choice', array(
+                'expanded'      => true,
+                'widget_type'   => 'inline',
+                'label_render'  => false,
+                'choices'       => array(
+                    'l' => 'Leworęczny',
+                    'p' => 'Praworęczny'
+                )
+            ))
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\PacjentBundle\Entity\Pacjent'
+            'data_class' => 'App\PacjentBundle\Entity\Pacjent',
+            'error_type' => 'block',
         ));
     }
 
