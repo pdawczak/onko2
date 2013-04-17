@@ -9,6 +9,7 @@
                         <th>ID</th>
                         <th>Imię</th>
                         <th>Nazwisko</th>
+                        <th></th>
                     </tr>
                 </thead>
                 {% for pacjent in pacjenci %}
@@ -16,6 +17,7 @@
                         <td>{{ pacjent.id }}</td>
                         <td>{{ pacjent.imie }}</td>
                         <td>{{ pacjent.nazwisko }}</td>
+                        <td><a href="{{ path('app_pacjent_show', { pacjentId: pacjent.id }) }}" class="btn btn-mini btn-info"><i class="icon-folder-open icon-white"></i></a></td>
                     </tr>
                 {% else %}
                     <tr>

@@ -81,6 +81,14 @@ class Pacjent
     private $reka;
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getImie() . ' ' . $this->getNazwisko();
+    }
+
+    /**
      * Get id
      *
      * @return integer 

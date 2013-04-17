@@ -2,10 +2,12 @@
 
 namespace App\PacjentBundle\Controller;
 
+use App\PacjentBundle\Entity\Pacjent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use App\PacjentBundle\Form\Type\PacjentType;
 
@@ -19,7 +21,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="app_pacjent_index")
-     * @Template()
+     * @Template
      */
     public function indexAction()
     {
@@ -31,7 +33,7 @@ class DefaultController extends Controller
     /**
      * @Route("/dodaj", name="app_pacjent_new")
      * @Method("GET")
-     * @Template()
+     * @Template
      */
     public function newAction()
     {
@@ -63,5 +65,15 @@ class DefaultController extends Controller
         return array(
             'form'  => $form->createView(),
         );
+    }
+
+    /**
+     * @Route("/{pacjentId}", name="app_pacjent_show", requirements={"pacjentId" = "\d+"})
+     * @Method("GET")
+     * @Template
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     */
+    public function showAction(Pacjent $pacjent)
+    {
     }
 }
