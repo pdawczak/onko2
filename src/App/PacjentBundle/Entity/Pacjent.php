@@ -4,6 +4,9 @@ namespace App\PacjentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 /**
  * Pacjent
  *
@@ -25,6 +28,7 @@ class Pacjent
      * @var string
      *
      * @ORM\Column(type="string", length=30, nullable=true)
+     * @Assert\NotBlank()
      */
     private $imie;
 
@@ -32,6 +36,7 @@ class Pacjent
      * @var string
      *
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank()
      */
     private $nazwisko;
 
@@ -39,6 +44,7 @@ class Pacjent
      * @var \DateTime
      *
      * @ORM\Column(name="data_urodzenia", type="date", nullable=true)
+     * @Assert\NotBlank()
      */
     private $dataUrodzenia;
 
@@ -46,6 +52,7 @@ class Pacjent
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
+     * @Assert\NotBlank()
      */
     private $plec;
 
@@ -53,6 +60,7 @@ class Pacjent
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank()
      */
     private $wzrost;
 
@@ -60,6 +68,7 @@ class Pacjent
      * @var integer
      *
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank()
      */
     private $waga;
 
@@ -67,6 +76,7 @@ class Pacjent
      * @var string
      *
      * @ORM\Column(type="string", length=1, nullable=true)
+     * @Assert\NotBlank()
      */
     private $reka;
 
@@ -239,5 +249,28 @@ class Pacjent
     public function getReka()
     {
         return $this->reka;
+    }
+
+    /**
+     * Set wagaKg
+     *
+     * @param null $wagaKg
+     * @return $this
+     */
+    public function setWagaKg($wagaKg = null)
+    {
+        $this->waga = $wagaKg * 100;
+
+        return $this;
+    }
+
+    /**
+     * Get wagaKg
+     *
+     * @return float
+     */
+    public function getWagaKg()
+    {
+        return $this->waga / 100;
     }
 }
