@@ -38,7 +38,7 @@ class DefaultController extends Controller
     public function newAction()
     {
         return array(
-            'form'  => $this->createForm(new PacjentType())->createView(),
+            'form'  => $this->get('app.form.factory')->getForm('AppPacjentBundle:Pacjent')->createView(),
         );
     }
 
@@ -49,7 +49,8 @@ class DefaultController extends Controller
      */
     public function createAction()
     {
-        $form = $this->createForm(new PacjentType());
+        /** @var \Symfony\Component\Form\Form $form */
+        $form = $this->get('app.form.factory')->getForm('AppPacjentBundle:Pacjent');
 
         $form->bind($this->getRequest());
         if ($form->isValid()) {
