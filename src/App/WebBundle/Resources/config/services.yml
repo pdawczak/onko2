@@ -1,6 +1,12 @@
 parameters:
+    app.form.factory.class:     App\WebBundle\Service\AppFormFactory
 
 services:
+    app.form.factory:
+        class:      %app.form.factory.class%
+        scope:      request
+        arguments:  [ @doctrine, @form.factory, @request ]
+
     app.navbar:
         class: '%mopa_bootstrap.navbar.generic%'
         scope: request
