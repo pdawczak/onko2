@@ -20,8 +20,12 @@ class PacjentType extends AbstractType
             ))
             ->add('nazwisko'    , null, array(
             ))
-            ->add('dataUrodzenia', null, array(
-                'label'     => 'Data urodzenia'
+            ->add('dataUrodzenia', 'text', array(
+                'label'     => 'Data urodzenia',
+                'attr'      => array(
+                    'class' => 'input-small datepicker',
+                    'placeholder' => 'dd.mm.rrrr'
+                ),
             ))
             ->add('plec'    , 'choice', array(
                 'label'         => 'Płeć',
@@ -39,6 +43,7 @@ class PacjentType extends AbstractType
                 )
             ))
             ->add('wagaKg'  , null, array(
+                'label'     => 'Waga',
                 'widget_suffix' => 'kg',
                 'attr'      => array(
                     'class' => 'input-mini',

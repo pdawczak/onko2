@@ -12,3 +12,16 @@
 {% block footer %}
     <p class="muted"><small>Onko2.2</small></p>
 {% endblock footer %}
+
+{% block foot_script %}
+    {% javascripts
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+        '@AppWebBundle/Resources/public/js/bootstrap.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+        '@AppWebBundle/Resources/public/js/eyecon-bootstrap-datepicker.js'
+        '@AppWebBundle/Resources/public/js/main.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock foot_script %}
