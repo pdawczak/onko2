@@ -30,17 +30,19 @@ abstract class EntityFormFactory
 
     /**
      * @param AbstractType $type
-     * @param null $data
+     * @param mixed $data
+     * @param array $options
      * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
      */
-    protected function createForm(AbstractType $type, $data = null)
+    protected function createForm(AbstractType $type, $data = null, array $options = array())
     {
-        return $this->factory->create($type, $data);
+        return $this->factory->create($type, $data, $options);
     }
 
     /**
      * @param mixed $data
+     * @param array $options
      * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
      */
-    abstract public function getForm($data = null);
+    abstract public function getForm($data = null, array $options = array());
 }

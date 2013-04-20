@@ -71,4 +71,39 @@ class DefaultController extends Controller
     public function showAction(Pacjent $pacjent)
     {
     }
+
+    /**
+     * @Route("/{pacjentId}/edytuj", name="app_pacjent_edit", requirements={"pacjentId" = "\d+"})
+     * @Method("GET")
+     * @Template
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     */
+    public function editAction(Pacjent $pacjent)
+    {
+        return array(
+            'form'      => $this->get('app.form.factory')->getForm('AppPacjentBundle:Pacjent')->createView(),
+            'pacjent'   => $pacjent,
+        );
+    }
+
+    /**
+     * @Route("/{pacjentId}/edytuj", name="app_pacjent_update", requirements={"pacjentId" = "\d+"})
+     * @Method("PUT")
+     * @Template
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     */
+    public function updateAction(Pacjent $pacjent)
+    {
+        $form = $this->get('app.form.factory')->getForm('AppPacjentBundle:Pacjent');
+
+        if ($this->get('app.form.persist')->process($form)) {
+            $this->get('session')->setFlash('success', 'Dane zpisane poprawnie.');
+            return $this->redirect($this->generateUrl('app_pacjent_index'));
+        }
+
+        return array(
+            'form'      => $form->createView(),
+            'pacjent'   => $pacjent,
+        );
+    }
 }
