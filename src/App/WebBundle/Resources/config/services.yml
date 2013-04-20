@@ -1,5 +1,5 @@
 parameters:
-    app.form.factory.class:     App\WebBundle\Service\AppFormFactory
+    app.form.factory.class:     App\WebBundle\Form\AppFormFactory
 
 services:
     app.form.factory:

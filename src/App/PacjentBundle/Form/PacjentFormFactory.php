@@ -2,11 +2,10 @@
 
 namespace App\PacjentBundle\Form;
 
-use App\PacjentBundle\Entity\Pacjent;
-use App\PacjentBundle\Form\Type\PacjentType;
 use Symfony\Component\HttpFoundation\Request;
 
-use App\WebBundle\Service\EntityFormFactory;
+use App\PacjentBundle\Form\Type\PacjentType;
+use App\WebBundle\Form\EntityFormFactory;
 
 class PacjentFormFactory extends EntityFormFactory
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\WebBundle\Service;
+namespace App\WebBundle\Form;
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
 

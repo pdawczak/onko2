@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: pdawczak
- * Date: 18.04.2013
- * Time: 21:30
- * To change this template use File | Settings | File Templates.
- */
 
-namespace App\WebBundle\Service;
+namespace App\WebBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormFactory as SymfonyFactory;
