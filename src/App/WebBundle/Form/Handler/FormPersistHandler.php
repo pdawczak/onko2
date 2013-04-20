@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
-class SimpleFormPersistHandler
+class FormPersistHandler
 {
     /**
      * @var \Symfony\Component\Form\Form

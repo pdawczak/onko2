@@ -1,6 +1,6 @@
 parameters:
     app.form.factory.class:     App\WebBundle\Form\AppFormFactory
-    app.form.persist.class:     App\WebBundle\Form\Handler\FormPersisHandler
+    app.form.persist.class:     App\WebBundle\Form\Handler\FormPersistHandler
 
 services:
     app.form.factory:
