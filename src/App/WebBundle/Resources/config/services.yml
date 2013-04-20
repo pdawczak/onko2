@@ -1,11 +1,17 @@
 parameters:
     app.form.factory.class:     App\WebBundle\Form\AppFormFactory
+    app.form.persist.class:     App\WebBundle\Form\Handler\FormPersisHandler
 
 services:
     app.form.factory:
         class:      %app.form.factory.class%
         scope:      request
-        arguments:  [ @doctrine, @form.factory, @request ]
+        arguments:  [ @doctrine.orm.entity_manager, @form.factory, @request ]
+
+    app.form.persist:
+        class:      %app.form.persist.class%
+        scope:      request
+        arguments:  [ @request, @doctrine.orm.entity_manager ]
 
     app.navbar:
         class: '%mopa_bootstrap.navbar.generic%'

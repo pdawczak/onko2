@@ -2,7 +2,7 @@
 
 namespace App\WebBundle\Form;
 
-use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\ORM\EntityManager;
 
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 class AppFormFactory
 {
     /**
-     * @var \Doctrine\Bundle\DoctrineBundle\Registry
+     * @var \Doctrine\ORM\EntityManager
      */
-    private $doctrine;
+    private $em;
 
     /**
      * @var \Symfony\Component\Form\FormFactory
@@ -25,13 +25,13 @@ class AppFormFactory
     private $request;
 
     /**
-     * @param Registry $doctrine
+     * @param \Doctrine\ORM\EntityManager $em
      * @param \Symfony\Component\Form\FormFactory $factory
      * @param Request $request
      */
-    public function __construct(Registry $doctrine, FormFactory $factory, Request $request)
+    public function __construct(EntityManager $em, FormFactory $factory, Request $request)
     {
-        $this->doctrine = $doctrine;
+        $this->em       = $em;
         $this->factory  = $factory;
         $this->request  = $request;
     }
@@ -134,8 +134,7 @@ class AppFormFactory
     private function getName($entity)
     {
         return $this
-            ->doctrine
-            ->getManager()
+            ->em
             ->getClassMetadata($entity)
             ->getName()
         ;
