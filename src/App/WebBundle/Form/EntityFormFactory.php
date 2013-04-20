@@ -3,7 +3,7 @@
 namespace App\WebBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormFactory as SymfonyFactory;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 
 abstract class EntityFormFactory
@@ -22,7 +22,7 @@ abstract class EntityFormFactory
      * @param \Symfony\Component\Form\FormFactory $factory
      * @param Request $request
      */
-    public function __construct(SymfonyFactory $factory, Request $request)
+    public function __construct(FormFactory $factory, Request $request)
     {
         $this->factory = $factory;
         $this->request = $request;
