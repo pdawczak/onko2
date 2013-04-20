@@ -20,10 +20,11 @@ class PacjentType extends AbstractType
             ))
             ->add('nazwisko'    , null, array(
             ))
-            ->add('dataUrodzenia', 'text', array(
+            ->add('dataUrodzenia', 'birthday', array(
                 'label'     => 'Data urodzenia',
+                'widget'    => 'single_text',
                 'attr'      => array(
-                    'class' => 'input-small datepicker',
+                    'class' => 'input-medium',
                     'placeholder' => 'dd.mm.rrrr'
                 ),
             ))

@@ -45,6 +45,7 @@ class Pacjent
      *
      * @ORM\Column(name="data_urodzenia", type="date", nullable=true)
      * @Assert\NotBlank()
+     * @Assert\Date()
      */
     private $dataUrodzenia;
 

@@ -52,13 +52,7 @@ class DefaultController extends Controller
         /** @var \Symfony\Component\Form\Form $form */
         $form = $this->get('app.form.factory')->getForm('AppPacjentBundle:Pacjent');
 
-        $form->bind($this->getRequest());
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($form->getData());
-            $em->flush();
-
+        if ($this->get('app.form.persist')->process($form)) {
             $this->get('session')->setFlash('success', 'Dane zpisane poprawnie.');
             return $this->redirect($this->generateUrl('app_pacjent_index'));
         }
