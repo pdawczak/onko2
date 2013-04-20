@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new App\WebBundle\AppWebBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new App\PacjentBundle\AppPacjentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

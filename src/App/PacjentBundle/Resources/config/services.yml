@@ -1,0 +1,16 @@
+parameters:
+    app_pacjent.entity.class:     App\PacjentBundle\Entity\Pacjent
+    app_pacjent.repository.class: App\PacjentBundle\Repository\PacjentRepository
+    app_pacjent_formatter.twig.extensions.class: App\PacjentBundle\Extension\PacjentFormatter
+
+services:
+    app_pacjent.repository:
+        class:              %app_pacjent.repository.class%
+        factory_service:    doctrine.orm.entity_manager
+        factory_method:     getRepository
+        arguments:          [ %app_pacjent.entity.class% ]
+
+    app_pacjent_formatter.twig.extensions:
+        class:      %app_pacjent_formatter.twig.extensions.class%
+        tags:
+            - { name: twig.extension }

@@ -1,0 +1,21 @@
+{% extends 'AppWebBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row-flow">
+        <div class="span12">
+            <legend>{{ pacjent }} {{ pacjent|wiek }}</legend>
+        </div>
+    </div>
+    <div class="row-flow">
+        <div class="span12">
+            <dl class="dl-horizontal">
+                <dt>Data urodzenia</dt>
+                <dd>{{ pacjent.dataUrodzenia|date('d.m.Y') }}</dd>
+                <dt>Wzrost</dt>
+                <dd>{{ pacjent.wzrost }} cm</dd>
+                <dt>Waga</dt>
+                <dd>{{ pacjent.wagaKg|number_format(2, ',') }} kg</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}

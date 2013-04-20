@@ -30,6 +30,16 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav');
+
+        $dropdown = $this->createDropdownMenuItem($menu, 'Pacjenci', true, array('caret' => true));
+        $this->addIcon($dropdown, array('icon' => 'user', 'append' => false));
+
+        $lista = $dropdown->addChild('Lista', array('route' => 'app_pacjent_index'));
+        $this->addIcon($lista, array('icon' => 'list', 'append' => false));
+        
+        $dodaj = $dropdown->addChild('Dodaj', array('route' => 'app_pacjent_new'));
+        $this->addIcon($dodaj, array('icon' => 'plus', 'append' => false));
 
         return $menu;
     }
@@ -37,6 +47,7 @@ class NavbarMenuBuilder extends AbstractNavbarMenuBuilder
     public function createRightSideDropdownMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav pull-right');
 
         return $menu;
     }
