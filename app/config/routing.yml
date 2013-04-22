@@ -1,3 +1,8 @@
+app_badanie_badanie:
+    resource: "@AppBadanieBadanieBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app_pacjent:
     resource: "@AppPacjentBundle/Controller/"
     type:     annotation
