@@ -87,6 +87,7 @@ class Pacjent
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="App\Badanie\BadanieBundle\Entity\Badanie", mappedBy="pacjent")
+     * @ORM\OrderBy({"data" = "DESC"})
      */
     private $badania;
 

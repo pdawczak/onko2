@@ -4,6 +4,8 @@ namespace App\Badanie\BadanieBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 use App\PacjentBundle\Entity\Pacjent;
 
 /**
@@ -14,6 +16,13 @@ use App\PacjentBundle\Entity\Pacjent;
  */
 class Badanie
 {
+    public static $wyniki = array(
+        'wz'    => 'WZ - wznowa',
+        'pr'    => 'PR - progresja',
+        'stg'   => 'STG - stagnacja (guz stabilny)',
+        'bcg'   => 'BCG - brak cech guza'
+    );
+
     /**
      * @var integer
      *
@@ -34,8 +43,16 @@ class Badanie
      * @var \DateTime
      *
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\NotBlank()
      */
     private $data;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="wynik_badania", type="string", length=5, nullable=true)
+     */
+    private $wynikBadania;
 
     /**
      * Get id
@@ -91,5 +108,28 @@ class Badanie
     public function getPacjent()
     {
         return $this->pacjent;
+    }
+
+    /**
+     * Set wynikBadania
+     *
+     * @param string $wynikBadania
+     * @return Badanie
+     */
+    public function setWynikBadania($wynikBadania)
+    {
+        $this->wynikBadania = $wynikBadania;
+    
+        return $this;
+    }
+
+    /**
+     * Get wynikBadania
+     *
+     * @return string 
+     */
+    public function getWynikBadania()
+    {
+        return $this->wynikBadania;
     }
 }
