@@ -1,0 +1,9 @@
+parameters:
+    app_badanie_formatter.twig.extensions.class: App\Badanie\BadanieBundle\Extension\BadanieFormatter
+
+services:
+    app_badanie_formatter.twig.extensions:
+        class:      %app_badanie_formatter.twig.extensions.class%
+        arguments:  [ @router ]
+        tags:
+            - { name: twig.extension }

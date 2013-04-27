@@ -13,3 +13,5 @@ app/config/parameters.yml
 composer.lock
 .DS_Store
 app/var
+/web/js
+/web/css

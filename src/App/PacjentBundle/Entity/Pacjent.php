@@ -3,9 +3,11 @@
 namespace App\PacjentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+use App\Badanie\BadanieBundle\Entity\Badanie;
 
 /**
  * Pacjent
@@ -80,6 +82,22 @@ class Pacjent
      * @Assert\NotBlank()
      */
     private $reka;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="App\Badanie\BadanieBundle\Entity\Badanie", mappedBy="pacjent")
+     * @ORM\OrderBy({"data" = "DESC"})
+     */
+    private $badania;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->badania = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -281,5 +299,39 @@ class Pacjent
     public function getWagaKg()
     {
         return $this->waga / 100;
+    }
+    
+    /**
+     * Add badanie
+     *
+     * @param \App\Badanie\BadanieBundle\Entity\Badanie $badanie
+     * @return Pacjent
+     */
+    public function addBadania(Badanie $badanie)
+    {
+        $this->badania[] = $badanie;
+        $badanie->setPacjent($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove badanie
+     *
+     * @param \App\Badanie\BadanieBundle\Entity\Badanie $badanie
+     */
+    public function removeBadania(Badanie $badanie)
+    {
+        $this->badania->removeElement($badanie);
+    }
+
+    /**
+     * Get badania
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBadania()
+    {
+        return $this->badania;
     }
 }

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 {% block html_tag %}
-<html>
+<html class="fuelux">
 {% endblock html_tag %}
 
 {% block head %}
@@ -13,6 +13,7 @@
             {% stylesheets
                 '@MopaBootstrapBundle/Resources/public/css/datepicker.css'
                 '@AppWebBundle/Resources/public/css/bootstrap.css'
+                '@AppWebBundle/Resources/public/css/bootstrap-fuel-responsive.min.css'
                 '@AppWebBundle/Resources/public/css/style.css'
             %}
             <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
