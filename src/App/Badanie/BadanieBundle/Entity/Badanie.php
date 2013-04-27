@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use App\PacjentBundle\Entity\Pacjent;
+use App\Badanie\PapierosyBundle\Entity\Papierosy;
 
 /**
  * Badanie
@@ -54,6 +55,13 @@ class Badanie
      * @Assert\NotBlank(groups={"setWynik"})
      */
     private $wynikBadania;
+
+    /**
+     * @var \App\Badanie\PapierosyBundle\Entity\Papierosy
+     *
+     * @ORM\OneToOne(targetEntity="App\Badanie\PapierosyBundle\Entity\Papierosy", mappedBy="badanie")
+     */
+    private $papierosy;
 
     /**
      * @param \DateTime $dataBadania
@@ -140,5 +148,29 @@ class Badanie
     public function getWynikBadania()
     {
         return $this->wynikBadania;
+    }
+
+    /**
+     * Set papierosy
+     *
+     * @param \App\Badanie\PapierosyBundle\Entity\Papierosy $papierosy
+     * @return Badanie
+     */
+    public function setPapierosy(Papierosy $papierosy = null)
+    {
+        $this->papierosy = $papierosy;
+        $papierosy->setBadanie($this);
+    
+        return $this;
+    }
+
+    /**
+     * Get papierosy
+     *
+     * @return \App\Badanie\PapierosyBundle\Entity\Papierosy 
+     */
+    public function getPapierosy()
+    {
+        return $this->papierosy;
     }
 }
