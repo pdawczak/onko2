@@ -43,7 +43,7 @@ class Badanie
      * @var \DateTime
      *
      * @ORM\Column(type="date", nullable=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"Default"})
      */
     private $data;
 
@@ -51,6 +51,7 @@ class Badanie
      * @var string
      *
      * @ORM\Column(name="wynik_badania", type="string", length=5, nullable=true)
+     * @Assert\NotBlank(groups={"setWynik"})
      */
     private $wynikBadania;
 
