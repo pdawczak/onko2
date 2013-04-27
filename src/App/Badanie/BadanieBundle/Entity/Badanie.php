@@ -55,6 +55,14 @@ class Badanie
     private $wynikBadania;
 
     /**
+     * @param \DateTime $dataBadania
+     */
+    public function __construct(\DateTime $dataBadania = null)
+    {
+        $this->setData($dataBadania);
+    }
+
+    /**
      * Get id
      *
      * @return integer 
