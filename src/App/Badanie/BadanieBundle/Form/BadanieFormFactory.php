@@ -9,6 +9,7 @@
 
 namespace App\Badanie\BadanieBundle\Form;
 
+use App\Badanie\BadanieBundle\Form\Type\BadanieWynikType;
 use App\WebBundle\Form\EntityFormFactory;
 
 use App\Badanie\BadanieBundle\Entity\Badanie;
@@ -28,11 +29,22 @@ class BadanieFormFactory extends EntityFormFactory
                 $data = $badanie;
             }
             else {
-                $data = new Badanie();
+                $data = new Badanie(new \DateTime());
                 $data->setPacjent($this->request->attributes->get('pacjent'));
             }
         }
 
         return $this->createForm(new BadanieType(), $data, $options);
+    }
+
+    public function getBadanieWynikForm()
+    {
+        $badanie = $this->request->attributes->get('badanie');
+
+        if (! $badanie) {
+            throw new \Exception('"Badanie" entity not set!');
+        }
+
+        return $this->createForm(new BadanieWynikType(), $badanie);
     }
 }

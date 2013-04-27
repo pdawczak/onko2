@@ -2,6 +2,7 @@
 
 namespace App\Badanie\BadanieBundle\Controller;
 
+use App\Badanie\BadanieBundle\Entity\Badanie;
 use App\PacjentBundle\Entity\Pacjent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -43,6 +44,56 @@ class DefaultController extends Controller
 
         return array(
             'form'  => $form->createView(),
+        );
+    }
+
+    /**
+     * @Route("/pacjent/{pacjentId}/badanie/{badanieId}/wynik/ustaw", name="app_badanie_set_wynik")
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     * @ParamConverter("badanie", class="AppBadanieBadanieBundle:Badanie", options={"id" = "badanieId"})
+     * @Method("GET")
+     * @Template()
+     */
+    public function setWynikAction(Pacjent $pacjent, Badanie $badanie)
+    {
+        return array(
+            'pacjent'   => $pacjent,
+            'badanie'   => $badanie,
+            'form'      => $this
+                ->get('app.form.factory')
+                ->getFormFactory('AppBadanieBadanieBundle:Badanie')
+                ->getBadanieWynikForm()
+                ->createView()
+            ,
+        );
+    }
+
+
+
+    /**
+     * @Route("/pacjent/{pacjentId}/badanie/{badanieId}/wynik/ustaw", name="app_badanie_update_wynik")
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     * @ParamConverter("badanie", class="AppBadanieBadanieBundle:Badanie", options={"id" = "badanieId"})
+     * @Method("PUT")
+     * @Template("AppBadanieBadanieBundle:Default:setWynik.html.twig")
+     */
+    public function updateWynikAction(Pacjent $pacjent, Badanie $badanie)
+    {
+        $form = $this
+            ->get('app.form.factory')
+            ->getFormFactory('AppBadanieBadanieBundle:Badanie')
+            ->getBadanieWynikForm()
+        ;
+
+        if ($this->get('app.form.persist')->process($form)) {
+            $this->get('session')->setFlash('success', 'Dane zpisane poprawnie.');
+            return $this->redirect($this->generateUrl('app_pacjent_show', array('pacjentId' => $pacjent->getId())));
+        }
+
+        return array(
+            'pacjent'   => $pacjent,
+            'badanie'   => $badanie,
+            'form'      => $form->createView(),
         );
     }
 }

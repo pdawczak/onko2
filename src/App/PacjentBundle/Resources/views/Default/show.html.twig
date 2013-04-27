@@ -25,10 +25,7 @@
                 <li><a href="{{ path('app_badanie_new', { pacjentId: pacjent.id }) }}">Dodaj badanie</a></li>
                 {% for badanie in pacjent.badania %}
                     <li>
-                        <dl class="dl-horizontal">
-                            <dt>Data badania</dt>
-                            <dd>{{ badanie.data|date('d.m.Y') }}</dd>
-                        </dl>
+                        {% include 'AppBadanieBadanieBundle:Default:partials/_badanie.html.twig' with { badanie: badanie } %}
                     </li>
                 {% endfor %}
             </ul>
