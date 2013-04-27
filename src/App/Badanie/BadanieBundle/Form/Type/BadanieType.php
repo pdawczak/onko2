@@ -13,6 +13,10 @@ class BadanieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setAttribute('error_type', 'block')
+        ;
+
+        $builder
             ->add('data', null, array(
                 'label'     => 'Data badania',
                 'widget'    => 'single_text',
@@ -33,7 +37,8 @@ class BadanieType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Badanie\BadanieBundle\Entity\Badanie'
+            'data_class' => 'App\Badanie\BadanieBundle\Entity\Badanie',
+            'validation_groups' => array('Default'),
         ));
     }
 

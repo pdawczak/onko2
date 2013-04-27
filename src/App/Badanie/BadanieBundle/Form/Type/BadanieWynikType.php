@@ -16,8 +16,8 @@ class BadanieWynikType extends AbstractType
             ->add('wynikBadania', 'choice', array(
                 'label'         => 'Wynik badania',
                 'empty_value'   => '',
-                'required'      => false,
                 'choices'       => Badanie::$wyniki,
+                'error_type'    => "block",
             ))
         ;
     }
@@ -25,7 +25,8 @@ class BadanieWynikType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Badanie\BadanieBundle\Entity\Badanie'
+            'data_class' => 'App\Badanie\BadanieBundle\Entity\Badanie',
+            'validation_groups' => array('setWynik'),
         ));
     }
 
