@@ -2,6 +2,7 @@
 
 namespace App\Badanie\PapierosyBundle\Entity;
 
+use App\Badanie\PapierosyBundle\Form\Type\NiePalacyType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,5 +30,13 @@ class NiePalacy extends Papierosy
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return \Symfony\Component\Form\AbstractType
+     */
+    function getType()
+    {
+        return new NiePalacyType();
     }
 }

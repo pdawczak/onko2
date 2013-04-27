@@ -2,6 +2,7 @@
 
 namespace App\Badanie\PapierosyBundle\Entity;
 
+use App\Badanie\PapierosyBundle\Form\Type\BierniePalacyType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -119,5 +120,13 @@ class BierniePalacy extends Papierosy
     public function getOstatnioNarazony()
     {
         return $this->ostatnioNarazony;
+    }
+
+    /**
+     * @return \Symfony\Component\Form\AbstractType
+     */
+    function getType()
+    {
+        return new BierniePalacyType();
     }
 }

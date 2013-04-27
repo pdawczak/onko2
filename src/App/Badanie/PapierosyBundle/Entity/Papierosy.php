@@ -16,7 +16,7 @@ use App\Badanie\BadanieBundle\Entity\Badanie;
  * @ORM\Entity
  */
 
-class Papierosy
+abstract class Papierosy
 {
     /**
      * @var integer
@@ -33,6 +33,11 @@ class Papierosy
      * @ORM\OneToOne(targetEntity="App\Badanie\BadanieBundle\Entity\Badanie", inversedBy="papierosy")
      */
     protected $badanie;
+
+    /**
+     * @return \Symfony\Component\Form\AbstractType
+     */
+    abstract function getType();
 
     /**
      * Get id

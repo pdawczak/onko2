@@ -2,6 +2,7 @@
 
 namespace App\Badanie\PapierosyBundle\Entity;
 
+use App\Badanie\PapierosyBundle\Form\Type\AktywniePalacyType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -149,5 +150,13 @@ class AktywniePalacy extends Papierosy
     public function getDataZaprzestania()
     {
         return $this->dataZaprzestania;
+    }
+
+    /**
+     * @return \Symfony\Component\Form\AbstractType
+     */
+    function getType()
+    {
+        return new AktywniePalacyType();
     }
 }
