@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="papierosy_niepalacy")
  * @ORM\Entity
  */
-class NiePalacy extends Papierosy
+class Niepalacy extends Papierosy
 {
     /**
      * @var integer
