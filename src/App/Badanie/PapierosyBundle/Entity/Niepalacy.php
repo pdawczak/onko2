@@ -37,6 +37,6 @@ class Niepalacy extends Papierosy
      */
     function getType()
     {
-        return new NiePalacyType();
+        return new NiepalacyType();
     }
 }
