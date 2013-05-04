@@ -5,6 +5,7 @@ namespace App\Badanie\PapierosyBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Badanie\BadanieBundle\Entity\Badanie;
+use App\Badanie\PapierosyBundle\Form\Type\PapierosyType;
 
 /**
  * Papierosy
@@ -12,12 +13,21 @@ use App\Badanie\BadanieBundle\Entity\Badanie;
  * @ORM\Table(name="papierosy")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"niepalacay" = "NiePalacy", "aktywnie_palacy" = "AktywniePalacy", "biernie_palacy" = "BierniePalacy"})
+ * @ORM\DiscriminatorMap({"niepalacay" = "Niepalacy", "aktywniePalacy" = "AktywniePalacy", "bierniePalacy" = "BierniePalacy"})
  * @ORM\Entity
  */
 
 abstract class Papierosy
 {
+    /**
+     * @var array
+     */
+    public static $kinds = array(
+        'niepalacy'         => 'Niepalący',
+        'aktywniePalacy'    => 'Aktywnie Palący',
+        'bierniePalacy'     => 'Biernie Palący',
+    );
+
     /**
      * @var integer
      *
