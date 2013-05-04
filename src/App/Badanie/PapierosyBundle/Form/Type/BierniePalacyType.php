@@ -11,9 +11,15 @@ class BierniePalacyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('miejsceNarazenia')
-            ->add('czasEkspozycji')
-            ->add('ostatnioNarazony')
+            ->add('miejsceNarazenia', null, array(
+                'label' => 'Miejsce narażenia',
+            ))
+            ->add('czasEkspozycji', null, array(
+                'label' => 'Czas ekspozycji',
+            ))
+            ->add('ostatnioNarazony', null, array(
+                'label' => 'Ostatnio narażony?',
+            ))
         ;
     }
 

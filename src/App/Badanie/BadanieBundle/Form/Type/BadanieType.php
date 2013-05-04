@@ -2,6 +2,8 @@
 
 namespace App\Badanie\BadanieBundle\Form\Type;
 
+use App\Badanie\PapierosyBundle\Entity\Papierosy;
+use App\Badanie\PapierosyBundle\Form\Type\PapierosyType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -31,6 +33,7 @@ class BadanieType extends AbstractType
                 'required'      => false,
                 'choices'       => Badanie::$wyniki,
             ))
+            ->add('papierosy', new PapierosyType())
         ;
     }
 

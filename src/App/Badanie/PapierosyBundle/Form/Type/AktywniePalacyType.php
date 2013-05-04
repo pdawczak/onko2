@@ -11,10 +11,23 @@ class AktywniePalacyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('iloscSztukDziennie')
-            ->add('okresPalenia')
-            ->add('ostatniPapieros')
-            ->add('dataZaprzestania')
+            ->add('iloscSztukDziennie', null, array(
+                'label'     => 'Ilość sztuk dziennie',
+            ))
+            ->add('okresPalenia', null, array(
+                'label'     => 'Okre palenia',
+            ))
+            ->add('ostatniPapieros', null, array(
+                'label'     => 'Ostatni papieros',
+            ))
+            ->add('dataZaprzestania', null, array(
+                'label'     => 'Data zaprzestania',
+                'widget'    => 'single_text',
+                'attr'      => array(
+                    'class' => 'input-medium',
+                    'placeholder' => 'dd.mm.rrrr'
+                ),
+            ))
         ;
     }
 
