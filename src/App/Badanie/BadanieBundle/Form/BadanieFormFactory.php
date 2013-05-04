@@ -10,6 +10,9 @@
 namespace App\Badanie\BadanieBundle\Form;
 
 use App\Badanie\BadanieBundle\Form\Type\BadanieWynikType;
+use App\Badanie\PapierosyBundle\Entity\AktywniePalacy;
+use App\Badanie\PapierosyBundle\Entity\BierniePalacy;
+use App\Badanie\PapierosyBundle\Model\Papierosy;
 use App\WebBundle\Form\EntityFormFactory;
 
 use App\Badanie\BadanieBundle\Entity\Badanie;
@@ -33,6 +36,8 @@ class BadanieFormFactory extends EntityFormFactory
                 $data->setPacjent($this->request->attributes->get('pacjent'));
             }
         }
+
+        $data->setPapierosy(new Papierosy($data));
 
         return $this->createForm(new BadanieType(), $data, $options);
     }

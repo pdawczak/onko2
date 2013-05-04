@@ -1,7 +1,13 @@
 parameters:
-    app_badanie_formatter.twig.extensions.class: App\Badanie\BadanieBundle\Extension\BadanieFormatter
+    app.badanie.persist.handler.class:            App\Badanie\BadanieBundle\Form\Handler\BadaniePersistHandler
+    app_badanie_formatter.twig.extensions.class:  App\Badanie\BadanieBundle\Extension\BadanieFormatter
 
 services:
+    app.badanie.persist.handler:
+        class:      %app.badanie.persist.handler.class%
+        scope:      request
+        arguments:  [ @request, @doctrine.orm.entity_manager ]
+
     app_badanie_formatter.twig.extensions:
         class:      %app_badanie_formatter.twig.extensions.class%
         arguments:  [ @router ]
