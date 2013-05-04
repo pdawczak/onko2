@@ -64,6 +64,13 @@ class Badanie
     private $papierosy;
 
     /**
+     * @var \App\Badanie\UzywkiBundle\Entity\Alkohol\Alkohol
+     *
+     * @ORM\OneToOne(targetEntity="App\Badanie\UzywkiBundle\Entity\Alkohol\Alkohol", mappedBy="badanie", cascade={"persist"})
+     */
+    private $alkohol;
+
+    /**
      * @param \DateTime $dataBadania
      */
     public function __construct(\DateTime $dataBadania = null)
