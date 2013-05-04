@@ -69,8 +69,6 @@ class DefaultController extends Controller
         );
     }
 
-
-
     /**
      * @Route("/pacjent/{pacjentId}/badanie/{badanieId}/wynik/ustaw", name="app_badanie_update_wynik")
      * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
@@ -96,5 +94,16 @@ class DefaultController extends Controller
             'badanie'   => $badanie,
             'form'      => $form->createView(),
         );
+    }
+
+    /**
+     * @Route("/pacjent/{pacjentId}/badanie/{badanieId}", name="app_badanie_show")
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     * @ParamConverter("badanie", class="AppBadanieBadanieBundle:Badanie", options={"id" = "badanieId"})
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction(Pacjent $pacjent, Badanie $badanie)
+    {
     }
 }
