@@ -59,7 +59,7 @@ class Badanie
     /**
      * @var \App\Badanie\PapierosyBundle\Entity\Papierosy
      *
-     * @ORM\OneToOne(targetEntity="App\Badanie\PapierosyBundle\Entity\Papierosy", mappedBy="badanie")
+     * @ORM\OneToOne(targetEntity="App\Badanie\PapierosyBundle\Entity\Papierosy", mappedBy="badanie", cascade={"persist"})
      */
     private $papierosy;
 
