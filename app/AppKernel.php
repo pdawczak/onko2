@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new App\PacjentBundle\AppPacjentBundle(),
             new App\Badanie\BadanieBundle\AppBadanieBadanieBundle(),
+            new App\Badanie\PapierosyBundle\AppBadaniePapierosyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

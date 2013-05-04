@@ -37,7 +37,7 @@ class DefaultController extends Controller
         /** @var \Symfony\Component\Form\Form $form */
         $form = $this->get('app.form.factory')->getForm('AppBadanieBadanieBundle:Badanie');
 
-        if ($this->get('app.form.persist')->process($form)) {
+        if ($this->get('app.badanie.persist.handler')->process($form)) {
             $this->get('session')->setFlash('success', 'Dane zpisane poprawnie.');
             return $this->redirect($this->generateUrl('app_pacjent_show', array('pacjentId' => $pacjent->getId())));
         }
@@ -69,8 +69,6 @@ class DefaultController extends Controller
         );
     }
 
-
-
     /**
      * @Route("/pacjent/{pacjentId}/badanie/{badanieId}/wynik/ustaw", name="app_badanie_update_wynik")
      * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
@@ -96,5 +94,16 @@ class DefaultController extends Controller
             'badanie'   => $badanie,
             'form'      => $form->createView(),
         );
+    }
+
+    /**
+     * @Route("/pacjent/{pacjentId}/badanie/{badanieId}", name="app_badanie_show")
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     * @ParamConverter("badanie", class="AppBadanieBadanieBundle:Badanie", options={"id" = "badanieId"})
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction(Pacjent $pacjent, Badanie $badanie)
+    {
     }
 }
