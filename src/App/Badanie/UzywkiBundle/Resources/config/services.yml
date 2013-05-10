@@ -1,3 +1,8 @@
 parameters:
+    app.badanie.type.alkohol_switcher.class:  App\Badanie\UzywkiBundle\Form\Type\Alkohol\AlkoholSwitcher
 
 services:
+    app.badanie.type.alkohol_switcher:
+        class:  %app.badanie.type.alkohol_switcher.class%
+        tags:
+            - { name: form.type, alias: alkohol_switcher }
