@@ -10,17 +10,19 @@ if (datepickers.length) {
 
 var palenie_switcher = $(".palenie-switcher");
 if (palenie_switcher.length) {
-    var choices = $("#app_badanie_badaniebundle_badanietype_papierosy_kind input");
-//    var choices = $("input[name='app_badanie_badaniebundle_badanietype[papierosy][kind]']");
-    choices.on("change", function () {
+    var choices = $("input[name='app_badanie_badaniebundle_badanietype[papierosy][kind]']");
+    function palenie_show_hide(val) {
         $(".form-palenie-switcher").hide();
         $(".form-palenie-switcher input").attr("disabled", true);
-        $(".form-" + $(this).val())
+        $(".form-" + val)
             .show()
             .find("input")
             .attr("disabled", false)
         ;
-        console.log(".form-" + $(this).val());
+    }
+    choices.on("change", function () {
+        palenie_show_hide($(this).val());
     });
-    choices.trigger("change");
+    var active = $("input[name='app_badanie_badaniebundle_badanietype[papierosy][kind]']:checked");
+    palenie_show_hide(active.val());
 }
