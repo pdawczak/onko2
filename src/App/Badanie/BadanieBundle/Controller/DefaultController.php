@@ -106,4 +106,46 @@ class DefaultController extends Controller
     public function showAction(Pacjent $pacjent, Badanie $badanie)
     {
     }
+
+    /**
+     * @Route("/pacjent/{pacjentId}/badanie/{badanieId}/edytuj", name="app_badanie_edit")
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     * @ParamConverter("badanie", class="AppBadanieBadanieBundle:Badanie", options={"id" = "badanieId"})
+     * @Method("GET")
+     * @Template()
+     */
+    public function editAction(Pacjent $pacjent, Badanie $badanie)
+    {
+        /** @var \Symfony\Component\Form\Form $form */
+        $form = $this->get('app.form.factory')->getForm('AppBadanieBadanieBundle:Badanie');
+
+        return array(
+            'pacjent'   => $pacjent,
+            'badanie'   => $badanie,
+            'form'      => $form->createView(),
+        );
+    }
+
+    /**
+     * @Route("/pacjent/{pacjentId}/badanie/{badanieId}/edytuj", name="app_badanie_update")
+     * @ParamConverter("pacjent", class="AppPacjentBundle:Pacjent", options={"id" = "pacjentId"})
+     * @ParamConverter("badanie", class="AppBadanieBadanieBundle:Badanie", options={"id" = "badanieId"})
+     * @Method("PUT")
+     * @Template()
+     */
+    public function updateAction(Pacjent $pacjent, Badanie $badanie)
+    {
+        /** @var \Symfony\Component\Form\Form $form */
+        $form = $this->get('app.form.factory')->getForm('AppBadanieBadanieBundle:Badanie');
+
+        if ($this->get('app.badanie.persist.handler')->process($form)) {
+            $this->get('session')->setFlash('success', 'Dane zpisane poprawnie.');
+            return $this->redirect($this->generateUrl('app_pacjent_show', array('pacjentId' => $pacjent->getId())));
+        }
+
+        return array(
+            'pacjent'   => $pacjent,
+            'form'      => $form->createView(),
+        );
+    }
 }

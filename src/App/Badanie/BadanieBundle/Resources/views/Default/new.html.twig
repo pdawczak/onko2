@@ -3,41 +3,22 @@
 {% block content %}
     <div class="row-flow">
         <div class="span12">
-            <form class="form-horizontal palenie-switcher" method="post" action="{{ path('app_badanie_create', { pacjentId: pacjent.id }) }}">
-                <fieldset>
-                    <legend>{{ pacjent }} - nowe badanie</legend>
-                    <input type="hidden" name="_method" value="post">
-                    {{ form_row(form.data) }}
-                    {{ form_row(form.wynikBadania) }}
+            <form class="form-horizontal palenie-switcher alkohol-switcher" method="post" action="{{ path('app_badanie_create', { pacjentId: pacjent.id }) }}">
+                <h2 style="margin-bottom: 50px;">{{ pacjent }} - nowe badanie</h2>
 
-                    {# Embedded #}
-                    {{ form_row(form.papierosy.kind) }}
-                    <div class="form-palenie-switcher form-niepalacy">
-                        {{ form_widget(form.papierosy.niepalacy) }}
-                    </div>
-                    <div class="form-palenie-switcher form-aktywniePalacy">
-                        {{ form_widget(form.papierosy.aktywniePalacy) }}
-                    </div>
-                    <div class="form-palenie-switcher form-bierniePalacy">
-                        {{ form_row(form.papierosy.bierniePalacy.miejsceNarazenia) }}
-                        {{ form_row(form.papierosy.bierniePalacy.czasEkspozycji) }}
-                        <div class="control-group">
-                            <div class="controls">
-                                {{ form_widget(form.papierosy.bierniePalacy.ostatnioNarazony) }}
-                            </div>
+                <input type="hidden" name="_method" value="post">
+
+                {% include 'AppBadanieBadanieBundle:Default:partials/_form.html.twig' with { form: form } %}
+
+                {{ form_rest(form) }}
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Zapisz</button>
+                            <a href="{{ path('app_pacjent_show', { pacjentId: pacjent.id }) }}" class="btn"><i class="icon-remove"></i> Anuluj</a>
                         </div>
                     </div>
-
-                    {{ form_rest(form) }}
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="form-actions">
-                                <button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> Zapisz</button>
-                                <a href="{{ path('app_pacjent_show', { pacjentId: pacjent.id }) }}" class="btn"><i class="icon-remove"></i> Anuluj</a>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
+                </div>
             </form>
         </div>
     </div>

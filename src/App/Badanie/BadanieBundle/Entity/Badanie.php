@@ -2,6 +2,7 @@
 
 namespace App\Badanie\BadanieBundle\Entity;
 
+use App\Badanie\UzywkiBundle\Entity\Alkohol\Alkohol;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -179,5 +180,29 @@ class Badanie
     public function getPapierosy()
     {
         return $this->papierosy;
+    }
+
+    /**
+     * Set alkohol
+     *
+     * @param \App\Badanie\UzywkiBundle\Entity\Alkohol\Alkohol $alkohol
+     * @return Badanie
+     */
+    public function setAlkohol(Alkohol $alkohol = null)
+    {
+        $this->alkohol = $alkohol;
+        $alkohol->setBadanie($this);
+
+        return $this;
+    }
+
+    /**
+     * Get alkohol
+     *
+     * @return \App\Badanie\UzywkiBundle\Entity\Alkohol\Alkohol 
+     */
+    public function getAlkohol()
+    {
+        return $this->alkohol;
     }
 }
