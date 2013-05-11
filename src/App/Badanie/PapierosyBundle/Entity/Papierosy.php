@@ -50,6 +50,11 @@ abstract class Papierosy
     abstract function getType();
 
     /**
+     * @return string
+     */
+    abstract function getTemplate();
+
+    /**
      * Get id
      *
      * @return integer 

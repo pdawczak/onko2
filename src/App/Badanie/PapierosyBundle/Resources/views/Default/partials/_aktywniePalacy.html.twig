@@ -1,0 +1,13 @@
+<span>Aktywnie palący</span>
+<dl class="dl-horizontal">
+    <dt>Ilość sztuk dziennie</dt>
+    <dd>{{ papierosy.iloscSztukDziennie }}</dd>
+    <dt>Okres palenia</dt>
+    <dd>{{ papierosy.okresPalenia }}</dd>
+    <dt>Ostatni papieros</dt>
+    <dd>{{ papierosy.ostatniPapieros }} godzin temu</dd>
+    {% if papierosy.dataZaprzestania %}
+        <dt>Data zaprzestania</dt>
+        <dd>{{ papierosy.dataZaprzestania|date('d.m.Y') }}</dd>
+    {% endif %}
+</dl>

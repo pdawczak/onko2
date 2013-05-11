@@ -11,6 +11,12 @@
             <dt>&nbsp;</dt>
             <dd><a href="{{ path('app_pacjent_show', { pacjentId: pacjent.id }) }}">Powrót do kartoteki pacjenta</a></dd>
         </dl>
+        <dl class="dl-horizontal">
+            <dt>Papierosy</dt>
+            <dd>
+                {% include badanie.papierosy.template with { papierosy: badanie.papierosy } %}
+            </dd>
+        </dl>
     </div>
 </div>
 {% endblock %}

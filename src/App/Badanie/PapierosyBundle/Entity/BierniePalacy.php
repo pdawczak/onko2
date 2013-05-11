@@ -129,4 +129,12 @@ class BierniePalacy extends Papierosy
     {
         return new BierniePalacyType();
     }
+
+    /**
+     * @return string
+     */
+    function getTemplate()
+    {
+        return 'AppBadaniePapierosyBundle:Default:partials/_bierniePalacy.html.twig';
+    }
 }

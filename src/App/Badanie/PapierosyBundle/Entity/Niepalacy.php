@@ -39,4 +39,12 @@ class Niepalacy extends Papierosy
     {
         return new NiepalacyType();
     }
+
+    /**
+     * @return string
+     */
+    function getTemplate()
+    {
+        return 'AppBadaniePapierosyBundle:Default:partials/_niepalacy.html.twig';
+    }
 }
