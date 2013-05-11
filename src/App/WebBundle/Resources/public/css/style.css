@@ -1,0 +1,12 @@
+body {
+    padding-top: 50px;
+}
+
+footer p {
+    text-align: center;
+}
+
+.empty-table {
+    text-align: center;
+    font-style: italic;
+}

@@ -1,0 +1,17 @@
+/web/bundles/
+/app/bootstrap.php.cache
+/app/cache/*
+/app/logs/*
+/build/
+/vendor/
+/bin/
+/composer.phar
+/nbproject/*
+app/config/parameters.yml
+*.*~
+.idea/
+composer.lock
+.DS_Store
+app/var
+/web/js
+/web/css

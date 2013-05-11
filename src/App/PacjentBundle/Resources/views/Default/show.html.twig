@@ -1,0 +1,34 @@
+{% extends 'AppWebBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row-flow">
+        <div class="span12">
+            <h2 style="margin-bottom: 50px;">{{ pacjent }} {{ pacjent|wiek }}</h2>
+        </div>
+    </div>
+    <div class="row-flow">
+        <div class="span12">
+            <dl class="dl-horizontal">
+                <dt>Data urodzenia</dt>
+                <dd>{{ pacjent.dataUrodzenia|date('d.m.Y') }}</dd>
+                <dt>Wzrost</dt>
+                <dd>{{ pacjent.wzrost }} cm</dd>
+                <dt>Waga</dt>
+                <dd>{{ pacjent.wagaKg|number_format(2, ',') }} kg</dd>
+            </dl>
+            <hr>
+        </div>
+    </div>
+    <div class="row-flow">
+        <div class="span12">
+            <ul class="unstyled">
+                <li><a href="{{ path('app_badanie_new', { pacjentId: pacjent.id }) }}">Dodaj badanie</a></li>
+                {% for badanie in pacjent.badania %}
+                    <li>
+                        {% include 'AppBadanieBadanieBundle:Default:partials/_badanie.html.twig' with { badanie: badanie } %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+<dl class="dl-horizontal">
+    <dt>Data badania</dt>
+    <dd>{{ badanie.data|date('d.m.Y') }}</dd>
+    <dt>Wynik badania</dt>
+    <dd>{{ badanie|wynik_badania }}</dd>
+    <dt>&nbsp;</dt>
+    <dd>
+        <a href="{{ path('app_badanie_show', { pacjentId: pacjent.id, badanieId: badanie.id }) }}">Pokaż szczegóły</a>
+        <a href="{{ path('app_badanie_edit', { pacjentId: pacjent.id, badanieId: badanie.id }) }}"></a>
+    </dd>
+</dl>

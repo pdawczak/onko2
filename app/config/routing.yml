@@ -1,0 +1,25 @@
+app_badanie_uzywki:
+    resource: "@AppBadanieUzywkiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app_badanie_papierosy:
+    resource: "@AppBadaniePapierosyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app_badanie_badanie:
+    resource: "@AppBadanieBadanieBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app_pacjent:
+    resource: "@AppPacjentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app_web:
+    resource: "@AppWebBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

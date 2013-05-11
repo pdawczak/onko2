@@ -1,0 +1,25 @@
+{% extends 'AppWebBundle::base.html.twig' %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block title %}Onko2.2{% endblock title %}
+
+{% block navbar %}
+    {{ mopa_bootstrap_navbar('frontendNavbar') }}
+{% endblock navbar %}
+
+{% block footer %}
+    <p class="muted"><small>Onko2.2</small></p>
+{% endblock footer %}
+
+{% block foot_script %}
+    {% javascripts
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+        '@AppWebBundle/Resources/public/js/loader.min.js'
+        '@AppWebBundle/Resources/public/js/eyecon-bootstrap-datepicker.js'
+        '@AppWebBundle/Resources/public/js/main.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock foot_script %}

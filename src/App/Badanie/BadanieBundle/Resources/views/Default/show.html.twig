@@ -1,0 +1,28 @@
+{% extends 'AppWebBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="row-flow">
+    <div class="span12">
+        <dl class="dl-horizontal">
+            <dt>Data badania</dt>
+            <dd>{{ badanie.data|date('d.m.Y') }}</dd>
+            <dt>Wynik badania</dt>
+            <dd>{{ badanie|wynik_badania }}</dd>
+            <dt>&nbsp;</dt>
+            <dd><a href="{{ path('app_pacjent_show', { pacjentId: pacjent.id }) }}">Powrót do kartoteki pacjenta</a></dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>Papierosy</dt>
+            <dd>
+                {% include badanie.papierosy.template with { papierosy: badanie.papierosy } %}
+            </dd>
+        </dl>
+        <dl class="dl-horizontal">
+            <dt>Alkohol</dt>
+            <dd>
+                {% include badanie.alkohol.template with { alkohol: badanie.alkohol } %}
+            </dd>
+        </dl>
+    </div>
+</div>
+{% endblock %}
