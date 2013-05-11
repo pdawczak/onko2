@@ -32,7 +32,7 @@ if (alkohol_switcher.length) {
     var alkohol_choices = $("input[name='app_badanie_badaniebundle_badanietype[alkohol][kind]']");
     function alkohol_show_hide(val) {
         $(".form-alkohol-switcher").hide();
-        $(".form-palenie-switcher input").attr("disabled", true);
+        $(".form-alkohol-switcher input").attr("disabled", true);
         $(".form-" + val)
             .show()
             .find("input")
