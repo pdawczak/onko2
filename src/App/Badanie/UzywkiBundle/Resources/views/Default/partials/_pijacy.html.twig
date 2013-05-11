@@ -1,0 +1,13 @@
+<span>Tak</span>
+<dl class="dl-horizontal">
+    <dt>Jedn. na tydzień</dt>
+    <dd>{{ alkohol.iloscJednostekNaTydzien }}</dd>
+    {% if alkohol.przedBadaniem %}
+        <dt>Jedn. przed badaniem</dt>
+        <dd>{{ alkohol.iloscJednostekPrzedBadaniem }}</dd>
+    {% endif %}
+    {% if alkohol.dataZaprzestania %}
+        <dt>Data zaprzestania</dt>
+        <dd>{{ alkohol.dataZaprzestania|date('d.m.Y') }}</dd>
+    {% endif %}
+</dl>

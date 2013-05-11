@@ -38,6 +38,11 @@ abstract class Alkohol
     abstract public function getType();
 
     /**
+     * @return string
+     */
+    abstract public function getTemplate();
+
+    /**
      * Get id
      *
      * @return integer 

@@ -102,4 +102,13 @@ class Alkohol extends AlkoholEntity
     {
         return new AlkoholType();
     }
+
+    /**
+     * @throws \Exception
+     * @return string
+     */
+    public function getTemplate()
+    {
+        throw new \Exception(sprintf('"%s" not renderable', get_class($this)));
+    }
 }

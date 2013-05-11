@@ -2,6 +2,7 @@
 
 namespace App\Badanie\UzywkiBundle\Entity\Alkohol;
 
+use App\Badanie\UzywkiBundle\Form\Type\Alkohol\NiepijacyType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +37,14 @@ class Niepijacy extends Alkohol
      */
     public function getType()
     {
-        // TODO: Implement getType() method.
+        return new NiepijacyType();
+    }
+
+    /**
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return 'AppBadanieUzywkiBundle:Default:partials/_niepijacy.html.twig';
     }
 }

@@ -159,4 +159,12 @@ class Pijacy extends Alkohol
     {
         return $this->dataZaprzestania;
     }
+
+    /**
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return 'AppBadanieUzywkiBundle:Default:partials/_pijacy.html.twig';
+    }
 }
