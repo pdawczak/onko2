@@ -4,11 +4,14 @@ namespace App\Badanie\BadanieBundle\Form\Type;
 
 use App\Badanie\PapierosyBundle\Entity\Papierosy;
 use App\Badanie\PapierosyBundle\Form\Type\PapierosyType;
+use App\Badanie\UzywkiBundle\Form\Type\Alkohol\AlkoholType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use App\Badanie\BadanieBundle\Entity\Badanie;
+
+use App\Badanie\UzywkiBundle\Form\DataTransformer\AlkoholTransformer;
 
 class BadanieType extends AbstractType
 {
@@ -34,6 +37,7 @@ class BadanieType extends AbstractType
                 'choices'       => Badanie::$wyniki,
             ))
             ->add('papierosy', new PapierosyType())
+            ->add('alkohol', 'alkohol_switcher')
         ;
     }
 

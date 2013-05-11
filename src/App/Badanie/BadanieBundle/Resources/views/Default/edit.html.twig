@@ -3,10 +3,9 @@
 {% block content %}
     <div class="row-flow">
         <div class="span12">
-            <form class="form-horizontal palenie-switcher alkohol-switcher" method="post" action="{{ path('app_badanie_create', { pacjentId: pacjent.id }) }}">
+            <form class="form-horizontal palenie-switcher" method="post" action="{{ path('app_badanie_update', { badanieId: badanie.id, pacjentId: pacjent.id }) }}">
                 <h2 style="margin-bottom: 50px;">{{ pacjent }} - nowe badanie</h2>
-
-                <input type="hidden" name="_method" value="post">
+                <input type="hidden" name="_method" value="put">
 
                 {% include 'AppBadanieBadanieBundle:Default:partials/_form.html.twig' with { form: form } %}
 

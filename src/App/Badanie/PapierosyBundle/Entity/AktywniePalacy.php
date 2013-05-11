@@ -159,4 +159,12 @@ class AktywniePalacy extends Papierosy
     {
         return new AktywniePalacyType();
     }
+
+    /**
+     * @return string
+     */
+    function getTemplate()
+    {
+        return 'AppBadaniePapierosyBundle:Default:partials/_aktywniePalacy.html.twig';
+    }
 }

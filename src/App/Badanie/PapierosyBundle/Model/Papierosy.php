@@ -153,4 +153,13 @@ class Papierosy extends Entity
     {
         return new PapierosyType();
     }
+
+    /**
+     * @throws \Exception
+     * @return string
+     */
+    function getTemplate()
+    {
+        throw new \Exception('"%s" is not renderable', get_class($this));
+    }
 }

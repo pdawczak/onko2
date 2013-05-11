@@ -1,0 +1,45 @@
+<fieldset>
+    {{ form_row(form.data) }}
+    {{ form_row(form.wynikBadania) }}
+</fieldset>
+
+<fieldset>
+    <legend>Papierosy</legend>
+    {# Embedded #}
+    {{ form_row(form.papierosy.kind) }}
+    <div class="form-palenie-switcher form-niepalacy">
+        {{ form_widget(form.papierosy.niepalacy) }}
+    </div>
+    <div class="form-palenie-switcher form-aktywniePalacy">
+        {{ form_widget(form.papierosy.aktywniePalacy) }}
+    </div>
+    <div class="form-palenie-switcher form-bierniePalacy">
+        {{ form_row(form.papierosy.bierniePalacy.miejsceNarazenia) }}
+        {{ form_row(form.papierosy.bierniePalacy.czasEkspozycji) }}
+        <div class="control-group">
+            <div class="controls">
+                {{ form_widget(form.papierosy.bierniePalacy.ostatnioNarazony) }}
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Alkohol</legend>
+    {{ form_row(form.alkohol.kind) }}
+    <div class="form-alkohol-switcher form-niepijacy">
+        {{ form_widget(form.alkohol.niepijacy) }}
+    </div>
+    <div class="form-alkohol-switcher form-pijacy">
+        {{ form_row(form.alkohol.pijacy.iloscJednostekNaTydzien) }}
+        <div class="control-group">
+            <div class="controls">
+                {{ form_widget(form.alkohol.pijacy.przedBadaniem) }}
+            </div>
+        </div>
+        <div class="pijacy-additional">
+            {{ form_row(form.alkohol.pijacy.iloscJednostekPrzedBadaniem) }}
+        </div>
+        {{ form_row(form.alkohol.pijacy.dataZaprzestania) }}
+    </div>
+</fieldset>

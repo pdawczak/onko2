@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Badanie\PapierosyBundle\Entity;
+namespace App\Badanie\UzywkiBundle\Entity\Alkohol;
 
-use App\Badanie\PapierosyBundle\Form\Type\NiePalacyType;
+use App\Badanie\UzywkiBundle\Form\Type\Alkohol\NiepijacyType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * NiePalacy
+ * Niepijacy
  *
- * @ORM\Table(name="papierosy_niepalacy")
+ * @ORM\Table(name="alkohol_niepijacy")
  * @ORM\Entity
  */
-class Niepalacy extends Papierosy
+class Niepijacy extends Alkohol
 {
     /**
      * @var integer
@@ -35,16 +35,16 @@ class Niepalacy extends Papierosy
     /**
      * @return \Symfony\Component\Form\AbstractType
      */
-    function getType()
+    public function getType()
     {
-        return new NiepalacyType();
+        return new NiepijacyType();
     }
 
     /**
      * @return string
      */
-    function getTemplate()
+    public function getTemplate()
     {
-        return 'AppBadaniePapierosyBundle:Default:partials/_niepalacy.html.twig';
+        return 'AppBadanieUzywkiBundle:Default:partials/_niepijacy.html.twig';
     }
 }

@@ -1,33 +1,21 @@
 <?php
 
-namespace App\Badanie\PapierosyBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
+namespace App\Badanie\UzywkiBundle\Entity\Alkohol;
 
 use App\Badanie\BadanieBundle\Entity\Badanie;
-use App\Badanie\PapierosyBundle\Form\Type\PapierosyType;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Papierosy
+ * Alkohol
  *
- * @ORM\Table(name="papierosy")
+ * @ORM\Table(name="alkohol")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"niepalacay" = "Niepalacy", "aktywniePalacy" = "AktywniePalacy", "bierniePalacy" = "BierniePalacy"})
+ * @ORM\DiscriminatorMap({"niepijacy" = "Niepijacy", "pijacy" = "Pijacy"})
  * @ORM\Entity
  */
-
-abstract class Papierosy
+abstract class Alkohol
 {
-    /**
-     * @var array
-     */
-    public static $kinds = array(
-        'niepalacy'         => 'Niepalący',
-        'aktywniePalacy'    => 'Aktywnie Palący',
-        'bierniePalacy'     => 'Biernie Palący',
-    );
-
     /**
      * @var integer
      *
@@ -40,19 +28,19 @@ abstract class Papierosy
     /**
      * @var \App\Badanie\BadanieBundle\Entity\Badanie
      *
-     * @ORM\OneToOne(targetEntity="App\Badanie\BadanieBundle\Entity\Badanie", inversedBy="papierosy")
+     * @ORM\OneToOne(targetEntity="App\Badanie\BadanieBundle\Entity\Badanie", inversedBy="alkohol")
      */
-    protected $badanie;
+    private $badanie;
 
     /**
      * @return \Symfony\Component\Form\AbstractType
      */
-    abstract function getType();
+    abstract public function getType();
 
     /**
      * @return string
      */
-    abstract function getTemplate();
+    abstract public function getTemplate();
 
     /**
      * Get id
@@ -68,7 +56,7 @@ abstract class Papierosy
      * Set badanie
      *
      * @param \App\Badanie\BadanieBundle\Entity\Badanie $badanie
-     * @return Papierosy
+     * @return Alkohol
      */
     public function setBadanie(Badanie $badanie = null)
     {
