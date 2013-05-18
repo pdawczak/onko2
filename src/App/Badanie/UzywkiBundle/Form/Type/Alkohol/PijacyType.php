@@ -15,7 +15,8 @@ class PijacyType extends AbstractType
                 'label'     => 'Il. jedn. na tydzień'
             ))
             ->add('przedBadaniem', null, array(
-                'label'     => 'Przed badaniem?'
+                'label'     => 'Przed badaniem?',
+                'required'  => false,
             ))
             ->add('iloscJednostekPrzedBadaniem', null, array(
                 'label'     => 'Il. jedn. przed badaniem'
